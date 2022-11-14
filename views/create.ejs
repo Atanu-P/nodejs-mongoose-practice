@@ -3,11 +3,11 @@
 <%- include("./partials/head.ejs") %>
 
 <body>
-    <h1>Craete blog</h1>
+    <h1>Create blogs</h1>
     <%- include("./partials/nav.ejs") %>
     <div>
         <h1></h1>
-        <form action="">
+        <form action="/blogs" method="post">
             <label for="title">Blog title:</label>
             <input type="text" id="title" name="title" required>
             <label for="snippet">Blog snippet:</label>

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// new blog schema created
 const blogSchema = new Schema(
   {
     title: {
@@ -20,6 +21,7 @@ const blogSchema = new Schema(
   { timestamps: true }
 );
 
+// new blog mofdel created
 const Blog = mongoose.model("Blog", blogSchema);
 
 module.exports = Blog;
