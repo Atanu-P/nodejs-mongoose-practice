@@ -37,7 +37,7 @@ app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
 
-// /blogs routes
+// all the /blogs routes
 app.use("/blogs", blogroutes);
 
 // route for 404 page
