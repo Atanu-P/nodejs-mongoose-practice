@@ -26,7 +26,7 @@ app.set("view engine", "ejs");
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 
-// rout for adding data to mongo db
+// route for adding data to mongo db
 app.get("/add-blog", (req, res) => {
   const blog = new Blog({
     title: "new blog 3",
@@ -44,7 +44,7 @@ app.get("/add-blog", (req, res) => {
     });
 });
 
-// rout for fetching data from mongo db
+// route for fetching data from mongo db
 app.get("/all-blogs", (req, res) => {
   Blog.find()
     .then((result) => {
@@ -55,7 +55,7 @@ app.get("/all-blogs", (req, res) => {
     });
 });
 
-// rout for fetching  single data from mongo db
+// route for fetching single data from mongo db
 app.get("/single-blog", (req, res) => {
   Blog.findById("636e0291d69742ecb298c9a2")
     .then((result) => {
@@ -89,7 +89,7 @@ app.get("/blog/create", (req, res) => {
   res.render("create", { title: "Create a new blog" });
 });
 
-// rout for post new blog
+// route for post new blog
 app.post("/blogs", (req, res) => {
   console.log(req.body);
   const blog = new Blog(req.body);
@@ -104,7 +104,7 @@ app.post("/blogs", (req, res) => {
     });
 });
 
-// rout for get and render specific blog
+// route for get and render specific blog
 app.get("/blogs/:id", (req, res) => {
   const id = req.params.id;
 
@@ -117,6 +117,21 @@ app.get("/blogs/:id", (req, res) => {
     });
 });
 
+// route for delete specific blog by id
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+
+  Blog.findByIdAndDelete(id)
+    .then((result) => {
+      // send redirection link to client side after deleting
+      res.json({ redirect: "/blogs" });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// route for 404 page
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
