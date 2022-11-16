@@ -42,6 +42,7 @@ const get_post_detail = (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+      res.status(404).render("404", { title: "Blog not found" });
     });
 };
 
