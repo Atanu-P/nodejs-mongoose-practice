@@ -10,6 +10,8 @@
         <p><%= blog.body %></p>
     </div>
     <div>
+        <a href="/blogs/update/<%= blog._id %>">Update</a>
+        <!-- <button id="update" data-doc="<%= blog._id%>">Update</button> -->
         <button id="delete" data-doc="<%= blog._id %>">Delete</button>
     </div>
     <%- include("./partials/footer.ejs") %>
@@ -30,5 +32,21 @@
             .catch(err => console.log(err))
     })
 </script>
+<!-- <script>
+    const update_blog = document.getElementById('update');
+
+    update_blog.addEventListener('click', (e) => {
+        const id = update_blog.dataset.doc;
+        const url_endpoint = `/blogs/update/${id}`;
+
+        fetch(url_endpoint, {
+                method: 'GET'
+            }).then(res => res.json())
+            .then(data => {
+                window.location.href = `${data.redirect}/${data._id}`
+            })
+            .catch(err => console.log(err))
+    })
+</script> -->
 
 </html>

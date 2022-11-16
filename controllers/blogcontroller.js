@@ -60,10 +60,43 @@ const delete_post = (req, res) => {
     });
 };
 
+const update_blog_form = (req, res) => {
+  const id = req.params.id;
+
+  Blog.findById(id)
+    .then((result) => {
+      console.log(result);
+      res.render("update", { blog: result, title: "Update Blog" });
+      // res.json({ redirect: "/update", result: result });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).render("404", { title: "Blog not found" });
+    });
+};
+
+const post_update_blog = (req, res) => {
+  // console.log(req);
+  const id = req.params.id;
+  const update = req.body;
+
+  Blog.findByIdAndUpdate(id, update)
+    .then((result) => {
+      console.log(result);
+      res.redirect(`/blogs/${id}`);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).render("404", { title: "Blog not found" });
+    });
+};
+
 module.exports = {
   get_all_blogs,
   create_blog_form,
   post_new_blog,
   get_post_detail,
   delete_post,
+  update_blog_form,
+  post_update_blog,
 };

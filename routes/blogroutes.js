@@ -58,4 +58,10 @@ router.get("/:id", blogcontroller.get_post_detail);
 // route for delete specific blog by id
 router.delete("/:id", blogcontroller.delete_post);
 
+// route for update blog form
+router.get("/update/:id", blogcontroller.update_blog_form);
+
+// route for post update blog
+router.post("/update/:id", blogcontroller.post_update_blog);
+
 module.exports = router;
