@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "mongoose": "^6.7.2",
@@ -11,5 +12,23 @@
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.9"
-  }
+  },
+  "name": "nodejs-mongoose-practice",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atanu-P/nodejs-mongoose-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Atanu-P/nodejs-mongoose-practice/issues"
+  },
+  "homepage": "https://github.com/Atanu-P/nodejs-mongoose-practice#readme",
+  "description": ""
 }

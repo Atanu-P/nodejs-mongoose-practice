@@ -3,20 +3,24 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const Blog = require("./models/blog");
 const blogroutes = require("./routes/blogroutes");
+require("dotenv").config();
 
 // express app
 const app = express();
 
 // connect to mongo db
-const db_url =
-  "mongodb+srv://node:node1234@test.7ydnwmm.mongodb.net/node?retryWrites=true&w=majority";
+const db_url = process.env.MONGODB_URL;
 mongoose
   .connect(db_url)
   .then((result) => {
     console.log("connected db");
 
-    // listen for requests
-    app.listen(3000);
+    // listen for request
+    const port = process.env.PORT || 3000;
+    const base_url = process.env.BASE_URL || `http://localhost:${port}/`;
+    app.listen(port, () => {
+      console.log(`✓ Listening on Port:${port}. Visit ${base_url}`);
+    });
   })
   .catch((err) => console.log(err));
 
